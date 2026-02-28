@@ -1,0 +1,23 @@
+/* Estilo base para los botones */
+.btn {
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Colores según la clase */
+.btn-set { background-color: #28a745; }    /* Verde */
+.btn-get { background-color: #17a2b8; }    /* Cyan */
+.btn-delete { background-color: #dc3545; } /* Rojo */
+
+/* Efecto al pasar el mouse */
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    filter: brightness(1.1);
+}
