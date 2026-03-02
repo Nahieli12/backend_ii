@@ -10,19 +10,17 @@ router.post('/register', async (req, res) => {
     try {
         const { first_name, last_name, email, age, password } = req.body;
         
-        // Importante: Verifica que aquí uses los nombres correctos
-        // Busca la línea del create dentro del router.post('/register')
             const newUser = await userModel.create({
                 first_name,
                 last_name,
                 email,
                 age,
-                password: createHash(password) // <--- Cambia 'password' por esto
+                password: createHash(password) 
             });
 
         res.json({ status: "success", message: "Usuario registrado", payload: newUser });
     } catch (error) {
-        console.log(error); // Mira la terminal de VS Code para ver el detalle del error
+        console.log(error); 
         res.status(500).json({ status: "error", error: "Error al registrar" });
     }
 });
@@ -48,7 +46,7 @@ router.post('/register', async (req, res) => {
         }).send({ status: "success", message: "Logged in" });
     });
 
-// RUTA CURRENT (Punto obligatorio de la consigna)
+// RUTA CURRENT
     router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
         res.send({ status: "success", payload: req.user });
     });

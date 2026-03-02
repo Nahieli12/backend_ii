@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// [POST] para crear un usuario (Corregido para la consigna)
+// [POST] para crear un usuario 
 router.post('/', async (req, res) => {
     try {
         const { first_name, last_name, email, age, password } = req.body;

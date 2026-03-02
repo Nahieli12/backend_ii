@@ -1,12 +1,12 @@
 const express = require('express');
 const usersRouter = require('./routes/users.router.js');
 const sessionsRouter = require('./routes/sessions.router.js');
-const { connectMongo } = require('./config/db.js'); // Movido aquí arriba
+const { connectMongo } = require('./config/db.js'); 
 
 const PORT = 4000;
 const MONGO_URI = 'mongodb://localhost:27017/backend_II';
 
-connectMongo(MONGO_URI); // Llamado sin errores de ortografía
+connectMongo(MONGO_URI); 
 
 const cookieParser = require('cookie-parser');
 
@@ -21,12 +21,12 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(cookieParser('coders2026'));
 
-initializePassport(); // <--- Ejecuta la función que creamos en config
+initializePassport(); 
 app.use(passport.initialize());
 
 // RUTAS
 app.use('/api/users', usersRouter);
-app.use('/api/sessions', sessionsRouter); // <--- Aquí va tu login y el /current
+app.use('/api/sessions', sessionsRouter); 
 
 //Guardamos la cookie
 app.get('/setcookie', (req, res) => {
