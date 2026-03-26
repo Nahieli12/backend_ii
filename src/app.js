@@ -27,6 +27,7 @@ app.use(cookieParser('coders2026'));
 initializePassport(passport); 
 app.use(passport.initialize());
 
+
 // RUTAS
 app.use('/api/users', usersRouter); 
 app.use('/api/sessions', sessionsRouter);

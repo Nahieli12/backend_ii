@@ -4,9 +4,9 @@ import passport from 'passport';
 
 const router = Router();
 
-// Ruta /current con Passport y el Controller
+// Cambiamos 'current' por 'jwt' para que coincida con passport.config.js
 router.get('/current', 
-    passport.authenticate('current', { session: false }), 
+    passport.authenticate('jwt', { session: false }), 
     SessionsController.current
 );
 
