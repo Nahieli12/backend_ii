@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
     first_name: { 
@@ -37,5 +37,5 @@ const userSchema = new mongoose.Schema({
 // Esta validación evita el error "OverwriteModelError" que te salió en la terminal
 const userModel = mongoose.models.user || mongoose.model('user', userSchema);
 
-module.exports = userModel;
+export default userModel;
 

@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose'; // Cambiado de require a import
 
-const connectMongo = async (uri) => {
+export const connectMongo = async (uri) => { // Agregamos 'export' aquí
     try {
         await mongoose.connect(uri);
         console.log('Conectado con MongoDB crack');
@@ -8,6 +8,3 @@ const connectMongo = async (uri) => {
         console.error('No se pudo conectar con MongoDB crack', error);
     }
 };
-
-// Exportamos como un objeto para que el require de app.js funcione
-module.exports = { connectMongo };

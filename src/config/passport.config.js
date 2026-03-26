@@ -1,5 +1,8 @@
-const passport = require('passport');
-const jwt = require('passport-jwt');
+import passport from 'passport';
+import jwt from 'passport-jwt';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const JWTStrategy = jwt.Strategy;
 const ExtractJWT = jwt.ExtractJwt;
@@ -9,6 +12,7 @@ const initializePassport = () => {
     const cookieExtractor = req => {
         let token = null;
         if (req && req.cookies) {
+            // Asegúrate de que este nombre coincida con el que usas al crear la cookie en el login
             token = req.cookies['coderCookieToken']; 
         }
         return token;
@@ -16,14 +20,16 @@ const initializePassport = () => {
 
     passport.use('jwt', new JWTStrategy({
         jwtFromRequest: ExtractJWT.fromExtractors([cookieExtractor]),
-        secretOrKey: 'secretKey_que_elijas'
+        // Usamos la variable de entorno, si no existe usa una por defecto
+        secretOrKey: process.env.JWT_SECRET || 'secretKey_que_elijas'
     }, async (jwt_payload, done) => {
         try {
-            return done(null, jwt_payload.user);
+            // El payload suele tener los datos del usuario
+            return done(null, jwt_payload);
         } catch (error) {
             return done(error);
         }
     }));
 };
 
-module.exports = initializePassport;
+export default initializePassport;

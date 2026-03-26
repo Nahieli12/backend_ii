@@ -1,6 +1,5 @@
-const { Router } = require('express');
-const userModel = require('../models/user.model.js'); 
-
+import { Router } from 'express';
+import userModel from '../dao/models/user.model.js';
 const router = Router();
 
 // [GET] para obtener usuarios
@@ -31,4 +30,4 @@ router.post('/', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;
